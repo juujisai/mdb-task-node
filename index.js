@@ -1,4 +1,5 @@
 const http = require('http');
+const express = require('express')
 
 let dataToSimulateDatabase = [
   {
@@ -35,27 +36,24 @@ let dataToSimulateDatabase = [
   },
 ];
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/') {
-    res.write('Hello')
-    res.end()
-  }
-
-  if (req.method === 'GET') {
-
-    if (req.url === '/api/pcparts') {
-      res.writeHead(200, { 'Content-type': 'application/json' })
-      res.write(JSON.stringify(dataToSimulateDatabase))
-      res.end()
-    }
-  }
-
-
-
-
-});
-
+const app = express()
 const PORT = process.env.PORT || 5000;
 
+app.get('/', (req, res) => {
+  res.send('welcome to api')
+})
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT} ...`));
+app.get('/api/pcparts', (req, res) => {
+  res.json(dataToSimulateDatabase)
+})
+
+app.post('api/pcparts', (req, res) => {
+  dataToSimulateDatabase = [...dataToSimulateDatabase, res.body]
+  console.log(dataToSimulateDatabase)
+})
+
+
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT} ...`))
+
+
