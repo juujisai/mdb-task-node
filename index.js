@@ -48,26 +48,16 @@ const app = express()
 const PORT = process.env.PORT || 5000;
 
 
-// Add Access Control Allow Origin headers
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000/");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
-
-app.get('/', cors(corsOptions), (req, res) => {
+app.get('/', cors(), (req, res) => {
   res.send('welcome to api')
 })
 
-app.get('/api/pcparts', cors(corsOptions), (req, res) => {
+app.get('/api/pcparts', cors(), (req, res) => {
   res.json(dataToSimulateDatabase)
 })
 
-app.post('/api/pcparts', cors(corsOptions), (req, res) => {
+app.post('/api/pcparts', cors(), (req, res) => {
   console.log(req.body, req, res)
   dataToSimulateDatabase = [...dataToSimulateDatabase, res.body]
   console.log(dataToSimulateDatabase)
