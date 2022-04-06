@@ -47,9 +47,9 @@ app.get('/api/pcparts', (req, res) => {
   res.json(dataToSimulateDatabase)
 })
 
-app.post('api/pcparts', (req, res) => {
+app.post('/api/pcparts', (req, res) => {
   console.log(req.body, req, res)
-  // dataToSimulateDatabase = [...dataToSimulateDatabase, res.body]
+  dataToSimulateDatabase = [...dataToSimulateDatabase, res.body]
   console.log(dataToSimulateDatabase)
 })
 
