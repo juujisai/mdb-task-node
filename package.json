@@ -1,0 +1,12 @@
+{
+  "name": "mdb-node-heroku",
+  "version": "1.0.0",
+  "description": "Node app for mdb task to deploy on heroku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Bartosz C",
+  "license": "ISC"
+}
