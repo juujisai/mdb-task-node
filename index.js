@@ -1,5 +1,13 @@
 const http = require('http');
 const express = require('express')
+const cors = require('cors')
+
+const corsOptions = {
+  origin: 'http://localhost:3000/',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
 
 let dataToSimulateDatabase = [
   {
@@ -39,15 +47,15 @@ let dataToSimulateDatabase = [
 const app = express()
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
+app.get('/', cors(corsOptions), (req, res) => {
   res.send('welcome to api')
 })
 
-app.get('/api/pcparts', (req, res) => {
+app.get('/api/pcparts', cors(corsOptions), (req, res) => {
   res.json(dataToSimulateDatabase)
 })
 
-app.post('/api/pcparts', (req, res) => {
+app.post('/api/pcparts', cors(corsOptions), (req, res) => {
   console.log(req.body, req, res)
   dataToSimulateDatabase = [...dataToSimulateDatabase, res.body]
   console.log(dataToSimulateDatabase)
