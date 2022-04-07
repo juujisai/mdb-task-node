@@ -66,7 +66,7 @@ app.post('/api/pcparts', cors(), (req, res) => {
 
 app.put('/api/pcparts', cors(), (req, res) => {
   // dataToSimulateDatabase = []
-  dataToSimulateDatabase = req.body
+  dataToSimulateDatabase = [[], ...req.body]
   res.send(dataToSimulateDatabase)
 
 })
