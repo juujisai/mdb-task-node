@@ -1,12 +1,6 @@
-const http = require('http');
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-
-const corsOptions = {
-  origin: 'http://localhost:3000/',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
 
 let dataToSimulateDatabase = [
@@ -65,18 +59,14 @@ app.get('/api/pcparts', cors(), (req, res) => {
 })
 
 app.post('/api/pcparts', cors(), (req, res) => {
-  // res.set('Access-Control-Allow-Origin', '*');
-
-  console.log(req.body, req, res)
   dataToSimulateDatabase = [...dataToSimulateDatabase, req.body]
-  // console.log(dataToSimulateDatabase)
-  res.send('POST request to the api')
-
+  res.send(dataToSimulateDatabase)
 
 })
 
-app.post('/', cors(), (req, res) => {
-  console.log(req.body, req, res)
+app.put('/api/pcparts', cors(), (req, res) => {
+  dataToSimulateDatabase = [...req.body]
+  res.send(dataToSimulateDatabase)
 
 })
 
