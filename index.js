@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 
 let dataToSimulateDatabase = [
   {
-    id: 'f0ff18e1-1923-45b9-b30a-fb3fc54bc161',
+    id: 'f0ff18e1-1923-45b9-b30a-fb3fc54bc162',
     name: "monitor",
     company: "asus",
     model: "VG279Q1R",
