@@ -8,7 +8,6 @@ const corsOptions = {
 }
 
 
-
 let dataToSimulateDatabase = [
   {
     id: 'f0ff18e1-1923-45b9-b30a-fb3fc54bc161',
@@ -47,6 +46,7 @@ let dataToSimulateDatabase = [
 const app = express()
 const PORT = process.env.PORT || 5000;
 
+app.use(cors())
 
 
 app.get('/', cors(), (req, res) => {
