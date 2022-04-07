@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express')
 const cors = require('cors')
+const bodyParser = require('body-parser')
 
 const corsOptions = {
   origin: 'http://localhost:3000/',
@@ -46,9 +47,13 @@ let dataToSimulateDatabase = [
 const app = express()
 const PORT = process.env.PORT || 5000;
 
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
+
 app.use(cors())
 
-app.options('/api/pcparts', cors()) // enable pre-flight request for DELETE request
 
 
 app.get('/', cors(), (req, res) => {
@@ -63,8 +68,11 @@ app.post('/api/pcparts', cors(), (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
 
   console.log(req.body, req, res)
-  dataToSimulateDatabase = [...dataToSimulateDatabase, req.body]
+  // dataToSimulateDatabase = [...dataToSimulateDatabase, req.body]
   console.log(dataToSimulateDatabase)
+  res.send('POST request to the homepage')
+
+
 })
 
 app.post('/', cors(), (req, res) => {
