@@ -63,7 +63,10 @@ app.post('/api/pcparts', cors(), (req, res) => {
   console.log(dataToSimulateDatabase)
 })
 
+app.post('/', cors(), (req, res) => {
+  console.log(req.body, req, res)
 
+})
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT} ...`))
 
