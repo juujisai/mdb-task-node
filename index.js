@@ -48,6 +48,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors())
 
+app.options('/api/pcparts', cors()) // enable pre-flight request for DELETE request
+
 
 app.get('/', cors(), (req, res) => {
   res.send('welcome to api')
