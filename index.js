@@ -58,6 +58,8 @@ app.get('/api/pcparts', cors(), (req, res) => {
 })
 
 app.post('/api/pcparts', cors(), (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+
   console.log(req.body, req, res)
   dataToSimulateDatabase = [...dataToSimulateDatabase, req.body]
   console.log(dataToSimulateDatabase)
